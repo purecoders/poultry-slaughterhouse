@@ -1,0 +1,68 @@
+
+.no-space, .grid {
+  padding: 0;
+  overflow: hidden;
+}
+
+
+.list-unstyled{
+  li{
+    line-height: 1.58em;
+  }
+}
+
+
+.section-container{
+  padding: 60px 0;
+}
+.section-container-spacer{
+  margin-bottom: 30px;
+}
+
+.hero-full-container{
+  padding: 20% 0;
+  @media (min-width: $screen-md-min) {
+    padding: 15% 0;
+  }
+}
+
+.hero-container{
+  padding: 120px 0 60px;
+}
+
+.white-text-container{
+  h1,h2,h3,h4,h5, p, a{
+    color: white;
+  }
+}
+
+.address-container{
+  @media (max-width: $screen-md-min) {
+    margin-top: 20px;
+  }
+}
+.icon {
+  -webkit-mask: url('../img/wave-hero-background.svg') no-repeat 50% 50%;
+  mask: url('../img/wave-hero-background.svg') no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+
+}
+.background-image-container{
+  text-align: center;
+  background: #099eeb;
+  background-image: url("../img/one.jpg");
+  background-image: linear-gradient(90deg,rgba(0,0,0,0.8),rgba(0,0,0,0)),url("../img/one.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+
+.footer-container{
+  background-image: url('../img/wave-footer.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 60px 0;
+  margin-top: 30px;
+}
