@@ -1,3 +1,139 @@
+$screen-md: 992px !default;
+$screen-sm: 768px !default;
+$screen-xs: 480px !default;
+
+$zindex-navbar: 1000 !default;
+
+$screen-xs-min: $screen-xs !default;
+$screen-sm-min: $screen-sm !default;
+
+$zindex-navbar-fixed: 1030 !default;
+// Fix the top/bottom navbars when screen real estate supports it
+$grid-float-breakpoint:$screen-md;
+
+$grid-gutter-width: 30px !default;
+$navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default;
+
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+$font-size-base: 14px !default;
+$font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
+$line-height-base: 1.428571429 !default; // 20/14
+$line-height-small: 1.5 !default;
+$line-height-computed: 21px !default; // ~20px
+$border-radius-base: 4px !default;
+$font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
+$padding-base-vertical: 6px !default;
+$padding-small-vertical: 5px !default;
+$input-height-base: 34px !default;
+$input-height-small: 30px !default;
+// Basics of a navbar
+$navbar-height: 50px !default;
+$navbar-margin-bottom: $line-height-computed !default;
+$navbar-border-radius: $border-radius-base !default;
+$navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default;
+$navbar-padding-vertical: 15px !default;
+$navbar-collapse-max-height: 340px !default;
+
+$navbar-default-color: #777 !default;
+$navbar-default-bg: #f8f8f8 !default;
+$navbar-default-border: darken($navbar-default-bg, 6.5%) !default;
+
+// Navbar links
+$navbar-default-link-color: white !default;
+$navbar-default-link-hover-color: #333 !default;
+$navbar-default-link-hover-bg: transparent !default;
+$navbar-default-link-active-color: #555 !default;
+$navbar-default-link-active-bg: darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-disabled-color: #ccc !default;
+$navbar-default-link-disabled-bg: transparent !default;
+
+// Navbar brand label
+$navbar-default-brand-color: $navbar-default-link-color !default;
+$navbar-default-brand-hover-color: darken($navbar-default-brand-color, 10%) !default;
+$navbar-default-brand-hover-bg: transparent !default;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg: #ddd !default;
+$navbar-default-toggle-icon-bar-bg: #888 !default;
+$navbar-default-toggle-border-color: #ddd !default;
+
+@mixin navbar-vertical-align($element-height) {
+  margin-top: (($navbar-height - $element-height) / 2);
+  margin-bottom: (($navbar-height - $element-height) / 2);
+}
+@mixin form-inline {
+
+  // Kick in the inline
+  @media (min-width: $screen-sm-min) {
+    // Inline-block all the things for "inline"
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align: middle;
+    }
+
+    // Make static controls behave like regular ones
+    .form-control-static {
+      display: inline-block;
+    }
+
+    .input-group {
+      display: inline-table;
+      vertical-align: middle;
+
+      .input-group-addon,
+      .input-group-btn,
+      .form-control {
+        width: auto;
+      }
+    }
+
+    // Input groups need that 100% width though
+    .input-group > .form-control {
+      width: 100%;
+    }
+
+    .control-label {
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match.
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      vertical-align: middle;
+
+      label {
+        padding-left: 0;
+      }
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      position: relative;
+      margin-left: 0;
+    }
+
+    // Re-override the feedback icon.
+    .has-feedback .form-control-feedback {
+      top: 0;
+    }
+  }
+}
+
+
+
 //
 // Navbars
 // --------------------------------------------------
@@ -395,8 +531,8 @@
 
 // Default navbar
 .navbar-default {
-  background-color: $navbar-default-bg;
-  border-color: $navbar-default-border;
+  background-color: transparent;
+  border-color: transparent;
 
   .navbar-brand {
     color: $navbar-default-brand-color;
@@ -452,7 +588,7 @@
 
   .navbar-collapse,
   .navbar-form {
-    border-color: $navbar-default-border;
+    border-color: transparent;
   }
 
   // Dropdown menu items
@@ -528,135 +664,135 @@
 
 // Inverse navbar
 
-.navbar-inverse {
-  background-color: $navbar-inverse-bg;
-  border-color: $navbar-inverse-border;
-
-  .navbar-brand {
-    color: $navbar-inverse-brand-color;
-    &:hover,
-    &:focus {
-      color: $navbar-inverse-brand-hover-color;
-      background-color: $navbar-inverse-brand-hover-bg;
-    }
-  }
-
-  .navbar-text {
-    color: $navbar-inverse-color;
-  }
-
-  .navbar-nav {
-    > li > a {
-      color: $navbar-inverse-link-color;
-
-      &:hover,
-      &:focus {
-        color: $navbar-inverse-link-hover-color;
-        background-color: $navbar-inverse-link-hover-bg;
-      }
-    }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-inverse-link-active-color;
-        background-color: $navbar-inverse-link-active-bg;
-      }
-    }
-    > .disabled > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-inverse-link-disabled-color;
-        background-color: $navbar-inverse-link-disabled-bg;
-      }
-    }
-  }
-
-  // Darken the responsive nav toggle
-  .navbar-toggle {
-    border-color: $navbar-inverse-toggle-border-color;
-    &:hover,
-    &:focus {
-      background-color: $navbar-inverse-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: $navbar-inverse-toggle-icon-bar-bg;
-    }
-  }
-
-  .navbar-collapse,
-  .navbar-form {
-    border-color: darken($navbar-inverse-bg, 7%);
-  }
-
-  // Dropdowns
-  .navbar-nav {
-    > .open > a {
-      &,
-      &:hover,
-      &:focus {
-        background-color: $navbar-inverse-link-active-bg;
-        color: $navbar-inverse-link-active-color;
-      }
-    }
-
-    @media (max-width: $grid-float-breakpoint-max) {
-      // Dropdowns get custom display
-      .open .dropdown-menu {
-        > .dropdown-header {
-          border-color: $navbar-inverse-border;
-        }
-        .divider {
-          background-color: $navbar-inverse-border;
-        }
-        > li > a {
-          color: $navbar-inverse-link-color;
-          &:hover,
-          &:focus {
-            color: $navbar-inverse-link-hover-color;
-            background-color: $navbar-inverse-link-hover-bg;
-          }
-        }
-        > .active > a {
-          &,
-          &:hover,
-          &:focus {
-            color: $navbar-inverse-link-active-color;
-            background-color: $navbar-inverse-link-active-bg;
-          }
-        }
-        > .disabled > a {
-          &,
-          &:hover,
-          &:focus {
-            color: $navbar-inverse-link-disabled-color;
-            background-color: $navbar-inverse-link-disabled-bg;
-          }
-        }
-      }
-    }
-  }
-
-  .navbar-link {
-    color: $navbar-inverse-link-color;
-    &:hover {
-      color: $navbar-inverse-link-hover-color;
-    }
-  }
-
-  .btn-link {
-    color: $navbar-inverse-link-color;
-    &:hover,
-    &:focus {
-      color: $navbar-inverse-link-hover-color;
-    }
-    &[disabled],
-    fieldset[disabled] & {
-      &:hover,
-      &:focus {
-        color: $navbar-inverse-link-disabled-color;
-      }
-    }
-  }
-}
+//.navbar-inverse {
+//  background-color: $navbar-inverse-bg;
+//  border-color: $navbar-inverse-border;
+//
+//  .navbar-brand {
+//    color: $navbar-inverse-brand-color;
+//    &:hover,
+//    &:focus {
+//      color: $navbar-inverse-brand-hover-color;
+//      background-color: $navbar-inverse-brand-hover-bg;
+//    }
+//  }
+//
+//  .navbar-text {
+//    color: $navbar-inverse-color;
+//  }
+//
+//  .navbar-nav {
+//    > li > a {
+//      color: $navbar-inverse-link-color;
+//
+//      &:hover,
+//      &:focus {
+//        color: $navbar-inverse-link-hover-color;
+//        background-color: $navbar-inverse-link-hover-bg;
+//      }
+//    }
+//    > .active > a {
+//      &,
+//      &:hover,
+//      &:focus {
+//        color: $navbar-inverse-link-active-color;
+//        background-color: $navbar-inverse-link-active-bg;
+//      }
+//    }
+//    > .disabled > a {
+//      &,
+//      &:hover,
+//      &:focus {
+//        color: $navbar-inverse-link-disabled-color;
+//        background-color: $navbar-inverse-link-disabled-bg;
+//      }
+//    }
+//  }
+//
+//  // Darken the responsive nav toggle
+//  .navbar-toggle {
+//    border-color: $navbar-inverse-toggle-border-color;
+//    &:hover,
+//    &:focus {
+//      background-color: $navbar-inverse-toggle-hover-bg;
+//    }
+//    .icon-bar {
+//      background-color: $navbar-inverse-toggle-icon-bar-bg;
+//    }
+//  }
+//
+//  .navbar-collapse,
+//  .navbar-form {
+//    border-color: darken($navbar-inverse-bg, 7%);
+//  }
+//
+//  // Dropdowns
+//  .navbar-nav {
+//    > .open > a {
+//      &,
+//      &:hover,
+//      &:focus {
+//        background-color: $navbar-inverse-link-active-bg;
+//        color: $navbar-inverse-link-active-color;
+//      }
+//    }
+//
+//    @media (max-width: $grid-float-breakpoint-max) {
+//      // Dropdowns get custom display
+//      .open .dropdown-menu {
+//        > .dropdown-header {
+//          border-color: $navbar-inverse-border;
+//        }
+//        .divider {
+//          background-color: $navbar-inverse-border;
+//        }
+//        > li > a {
+//          color: $navbar-inverse-link-color;
+//          &:hover,
+//          &:focus {
+//            color: $navbar-inverse-link-hover-color;
+//            background-color: $navbar-inverse-link-hover-bg;
+//          }
+//        }
+//        > .active > a {
+//          &,
+//          &:hover,
+//          &:focus {
+//            color: $navbar-inverse-link-active-color;
+//            background-color: $navbar-inverse-link-active-bg;
+//          }
+//        }
+//        > .disabled > a {
+//          &,
+//          &:hover,
+//          &:focus {
+//            color: $navbar-inverse-link-disabled-color;
+//            background-color: $navbar-inverse-link-disabled-bg;
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//  .navbar-link {
+//    color: $navbar-inverse-link-color;
+//    &:hover {
+//      color: $navbar-inverse-link-hover-color;
+//    }
+//  }
+//
+//  .btn-link {
+//    color: $navbar-inverse-link-color;
+//    &:hover,
+//    &:focus {
+//      color: $navbar-inverse-link-hover-color;
+//    }
+//    &[disabled],
+//    fieldset[disabled] & {
+//      &:hover,
+//      &:focus {
+//        color: $navbar-inverse-link-disabled-color;
+//      }
+//    }
+//  }
+//}

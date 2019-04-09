@@ -1,29 +1,44 @@
 <!-- Add your content of header -->
-<header>
-  <nav class="navbar navbar-default active">
+<header class="">
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-default home">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <button onclick="setPadding()" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="./index.html" title="">
+        <a class="navbar-brand" href="{{route('home')}}" title="">
           <img src="{{asset('img/poultry-icon.svg')}}" class="navbar-logo-img" alt="">
-          کشتارگاه مرغ
+          کشتارگاه جهان مرغ
         </a>
       </div>
 
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="./index.html" title="">لیست قیمت</a></li>
-          <li><a href="./project.html" title="">مشتریان ما</a></li>
-          <li><a href="./project.html" title="">تماس با ما</a></li>
+      <div id="navbar-collapse"  class="collapse navbar-collapse" >
+        <ul class="nav navbar-nav navbar-right rtl">
+          <li class="dropdown">
+            <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              مجموعه زنجیره ای
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:200px">
+              <a class="dropdown-item" href="#">مرغ مادرفلامینگو فرام یک</a>
+              <a class="dropdown-item" href="#">مرغ مادرفلامینگو فرام دو</a>
+              <a class="dropdown-item" href="#">مرغ مادر سپیدرود</a>
+              <a class="dropdown-item" href="#">مرغ مادر سپید مرغ</a>
+              <a class="dropdown-item" href="#">مرغ مادر خوشه خوان</a>
+              <a class="dropdown-item" href="#">مرغ مادر تعاونی</a>
+            </div>
+          </li>
+          <li><a href="{{route('human-resource')}}" title="">منابع انسانی</a></li>
+          <li><a href="{{route('products')}}" title="">محصولات شرکت</a></li>
+          <li><a href="{{route('gallery')}}" title="">گالری</a></li>
+          <li><a href="./project.html" title="">درباره ما</a></li>
+
           <li>
-            <p>
-              <a href="./components.html" class="btn btn-default navbar-btn" title="">خرید آنلاین</a>
-            </p>
+            {{--<p>--}}
+              {{--<a href="./components.html" class="btn btn-default navbar-btn" title="">خرید آنلاین</a>--}}
+            {{--</p>--}}
           </li>
 
         </ul>

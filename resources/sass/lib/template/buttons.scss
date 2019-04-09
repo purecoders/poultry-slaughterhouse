@@ -1,5 +1,9 @@
 
-
+$btn-primary-color: #1763E9 !default;
+$btn-success-color:         #5cb85c !default;
+$btn-info-color:            #08005F !default;
+$btn-warning-color:         #f0ad4e !default;
+$btn-danger-color:          #d9534f !default;
 .btn{
   @include transition(all .1s linear);
 }

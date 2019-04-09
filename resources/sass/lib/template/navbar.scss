@@ -1,32 +1,32 @@
-.navbar-btn{
-  float:left;
+@import "../bootstrap/_navbar";
+.navbar-btn {
+  float: left;
   @media (max-width: $screen-md) {
-    margin-left:15px;
-    margin-right:15px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
-.navbar-default.active{
+.navbar-default.active {
   border-color: transparent;
   @include transition(all .5s linear);
   background-image: url('../img/wave-header.svg');
   background-position: 0 90%;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 
-  .navbar-nav{
-    
+  .navbar-nav {
+
   }
   @media (max-width: $screen-sm) {
-    .navbar-nav{
+    .navbar-nav {
       margin-bottom: 60px;
     }
   }
 }
 
-
-.navbar-brand>.navbar-logo-img{
+.navbar-brand > .navbar-logo-img {
   height: 50px;
   -moz-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
@@ -39,15 +39,15 @@
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: white;
+  background-color: white;
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
   .icon-bar {
-      background-color: #888;
+    background-color: #888;
   }
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   font-weight: 700;
 }

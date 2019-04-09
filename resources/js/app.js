@@ -36,16 +36,18 @@ import ScrollReveal from 'scrollreveal'
 window.navbarFixedTopAnimation = function navbarFixedTopAnimation() {
     var scroll_pos = 0;
     $(".navbar-default").removeClass('active').addClass('navbar-fixed-top');
+    if(!window.location.href.includes('human-resource')){
+        $(document).scroll(function() {
+            scroll_pos = $(this).scrollTop();
+            if(scroll_pos > 440) {
+                $(".navbar-default").addClass('active');
+            } else {
+                if ($(".navbar-default").hasClass('home') && $(".navbar-collapse").hasClass('in')) return;
+                $(".navbar-default").removeClass('active');
+            }
+        });
+    }
 
-    $(document).scroll(function() {
-        scroll_pos = $(this).scrollTop();
-        if(scroll_pos > 440) {
-            $(".navbar-default").addClass('active');
-        } else {
-            if ($(".navbar-default").hasClass('home') && $(".navbar-collapse").hasClass('in')) return;
-            $(".navbar-default").removeClass('active');
-        }
-    });
 
     $('.navbar-toggle').click(function(event){
         if (!$('.navbar-default').hasClass('active')) {
@@ -79,4 +81,12 @@ window.scrollRevelation = function scrollRevelation( classString ) {
 window.navActivePage =  function navActivePage(){
     $('nav li a[href=".' + location.pathname + '"]').addClass('active');
     if (location.pathname == '/') $('nav li a[href="./index.html"]').addClass('active')
+}
+function setPadding() {
+    if(!document.getElementById('navbar-collapse').className.match(/\in\b/)){
+        document.getElementById('navbar').style.paddingBottom = '70px';
+    }else{
+        document.getElementById('navbar').style.paddingBottom = '20px';
+    }
+
 }

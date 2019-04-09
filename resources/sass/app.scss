@@ -7,8 +7,9 @@
 
 // Bootstrap
 
-//@import '~bootstrap-v4-rtl/scss/bootstrap';
-@import './lib/bootstrap';
+@import '~bootstrap-v4-rtl/scss/bootstrap-rtl';
+//@import './lib/bootstrap';
+//@import "./lib/bootstrap/_navbar";
 
 // import the base template
 @import './lib/template';
