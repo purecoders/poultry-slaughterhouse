@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('home');
-})->name('home1');
+    return view('app');
+})->name('app');
 
 Route::get('/human-resource',function (){
   return view('humanResource');
@@ -35,3 +35,6 @@ Route::get('/chain-set',function (){
 Route::get('/about-us',function (){
   return view('aboutUs');
 })->name('about-us');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
 <script src="{{asset('js/chart.min.js')}}"></script>
 

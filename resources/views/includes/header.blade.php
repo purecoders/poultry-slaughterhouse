@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{route('home1')}}" title="">
+        <a class="navbar-brand" href="{{route('app')}}" title="">
           <img src="{{asset('img/poultry-icon.svg')}}" class="navbar-logo-img" alt="">
           کشتارگاه جهان مرغ
         </a>

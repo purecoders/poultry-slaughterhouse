@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
 <!-- jQuery -->
 <script src="{{asset('js/jquery.min.js')}}"></script>
