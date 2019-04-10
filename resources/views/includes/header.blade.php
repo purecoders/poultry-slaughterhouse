@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{route('home')}}" title="">
+        <a class="navbar-brand" href="{{route('home1')}}" title="">
           <img src="{{asset('img/poultry-icon.svg')}}" class="navbar-logo-img" alt="">
           کشتارگاه جهان مرغ
         </a>
@@ -22,18 +22,17 @@
               مجموعه زنجیره ای
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:200px">
-              <a class="dropdown-item" href="#">مرغ مادرفلامینگو فرام یک</a>
-              <a class="dropdown-item" href="#">مرغ مادرفلامینگو فرام دو</a>
-              <a class="dropdown-item" href="#">مرغ مادر سپیدرود</a>
-              <a class="dropdown-item" href="#">مرغ مادر سپید مرغ</a>
-              <a class="dropdown-item" href="#">مرغ مادر خوشه خوان</a>
-              <a class="dropdown-item" href="#">مرغ مادر تعاونی</a>
+              <a id="toFlamingo" class="dropdown-item" href="{{route('chain-set')}}#flamingo1">مرغ مادرفلامینگو فرام یک</a>
+              <a id="toFlamingo2" class="dropdown-item" href="{{route('chain-set')}}#flamingo2">مرغ مادرفلامینگو فرام دو</a>
+              <a id="toSepidmorgh" class="dropdown-item" href="{{route('chain-set')}}#sepidmorgh">مرغ مادر سپید مرغ</a>
+              <a id="toKhushekhan" class="dropdown-item" href="{{route('chain-set')}}#khushekhan">مرغ مادر خوشه خوان</a>
+              <a id="toTavoni" class="dropdown-item" href="{{route('chain-set')}}#tavoni">مرغ مادر تعاونی</a>
             </div>
           </li>
           <li><a href="{{route('human-resource')}}" title="">منابع انسانی</a></li>
           <li><a href="{{route('products')}}" title="">محصولات شرکت</a></li>
           <li><a href="{{route('gallery')}}" title="">گالری</a></li>
-          <li><a href="./project.html" title="">درباره ما</a></li>
+          <li><a href="{{route('about-us')}}" title="">درباره ما</a></li>
 
           <li>
             {{--<p>--}}

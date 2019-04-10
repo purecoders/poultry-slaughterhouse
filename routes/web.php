@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('index');
-})->name('home');
+    return view('home');
+})->name('home1');
 
 Route::get('/human-resource',function (){
   return view('humanResource');
@@ -27,3 +27,11 @@ Route::get('/products',function (){
 Route::get('/gallery',function (){
   return view('gallery');
 })->name('gallery');
+
+Route::get('/chain-set',function (){
+  return view('chainSet');
+})->name('chain-set');
+
+Route::get('/about-us',function (){
+  return view('aboutUs');
+})->name('about-us');

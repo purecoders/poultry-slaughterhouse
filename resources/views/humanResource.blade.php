@@ -1,5 +1,5 @@
-@include('includes.metaHeader')
-@include('includes.header')
+@extends('layout.main')
+@section('content')
 
 <div class="section-container mt-5 pt-5">
   <div class="container text-center mt-3">
@@ -66,24 +66,6 @@
   </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        // window.navbarFixedTopAnimation();
-        if(window.location.href.includes('human-resource')){
-            document.getElementById('navbar').classList.add('active')
-            document.getElementById('navbar').classList.add('navbar-fixed-top')
-        }
+@endsection
 
-    });
-    function setPadding() {
-        if(!document.getElementById('navbar-collapse').className.match(/\in\b/)){
-            document.getElementById('navbar').style.paddingBottom = '70px';
-        }else{
-            document.getElementById('navbar').style.paddingBottom = '20px';
-        }
 
-    }
-</script>
-
-@include('includes.footer')
-@include('includes.metaFooter')

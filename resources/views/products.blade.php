@@ -1,5 +1,5 @@
-@include('includes.metaHeader')
-@include('includes.header')
+@extends('layout.main')
+@section('content')
 <script src="{{asset('js/chart.min.js')}}"></script>
 
 <style>
@@ -366,24 +366,4 @@
   </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        // window.navbarFixedTopAnimation();
-        if(window.location.href.includes('products')){
-            document.getElementById('navbar').classList.add('active')
-            document.getElementById('navbar').classList.add('navbar-fixed-top')
-        }
-
-    });
-    function setPadding() {
-        if(!document.getElementById('navbar-collapse').className.match(/\in\b/)){
-            document.getElementById('navbar').style.paddingBottom = '70px';
-        }else{
-            document.getElementById('navbar').style.paddingBottom = '20px';
-        }
-
-    }
-</script>
-
-@include('includes.footer')
-@include('includes.metaFooter')
+@endsection

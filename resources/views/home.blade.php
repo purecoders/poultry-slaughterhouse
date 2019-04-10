@@ -1,5 +1,5 @@
-@include('includes.metaHeader')
-@include('includes.header')
+@extends('layout.main')
+@section('content')
 
 <!-- Add your site or app content here -->
 <div class="icon hero-full-container background-image-container white-text-container">
@@ -124,7 +124,7 @@
       <div class="col-12 col-md-12">
         <div class="section-container-spacer">
           <h2 class="text-center">محصولات</h2>
-          <p class="text-center" dir="rtl">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+          <p  class="text-center" dir="rtl">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
 
         </div>
         <div class="row">
@@ -139,7 +139,7 @@
           </div>
           <div  class="col-md-3 text-center">
             <div class="product-more d-flex justify-content-center align-items-center">
-              <a  href="#"  class="btn btn-primary ">
+              <a  href="{{route('products')}}"  class="btn btn-primary ">
                 بیشتر ...
               </a>
             </div>
@@ -202,48 +202,7 @@
     </div>
   </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    //starts the carousel
+<script src="{{asset('js/jquery.min.js')}}"></script>
 
-    document.addEventListener("DOMContentLoaded", function (event) {
-        window.navbarFixedTopAnimation();
-    });
-    function setPadding() {
-        if(!document.getElementById('navbar-collapse').className.match(/\in\b/)){
-            document.getElementById('navbar').style.paddingBottom = '70px';
-        }else{
-            document.getElementById('navbar').style.paddingBottom = '20px';
-        }
 
-    }
-
-    $(document).ready(function(){
-        // Add smooth scrolling to all links
-        $("#btnProducts").on('click', function(event) {
-
-            // Make sure this.hash has a value before overriding default behavior
-            if (this.hash !== "") {
-                // Prevent default anchor click behavior
-                event.preventDefault();
-
-                // Store hash
-                var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-                $('html, body').animate({
-                    scrollTop: $(hash).offset().top - 50
-                }, 800, function(){
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-            } // End if
-        });
-    });
-
-</script>
-
-@include('includes.footer')
-@include('includes.metaFooter')
+@endsection

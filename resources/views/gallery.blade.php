@@ -1,11 +1,11 @@
-@include('includes.metaHeader')
-@include('includes.header')
+@extends('layout.main')
+@section('content')
 <!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
 
 <!-- nanogallery2 -->
-<link  href="https://unpkg.com/nanogallery2@2.4.2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
-<script  type="text/javascript" src="https://unpkg.com/nanogallery2@2.4.2/dist/jquery.nanogallery2.min.js"></script>
+<link  href="{{asset('css/nanogallery2.min.css')}}" rel="stylesheet" type="text/css">
+<script  type="text/javascript" src="{{asset('js/jquery.nanogallery2.min.js')}}"></script>
 
 <div class="section-container mt-5 pt-5">
   <div class="container text-center mt-3">
@@ -48,24 +48,4 @@
   </div>
   </div>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        if(window.location.href.includes('gallery')){
-            document.getElementById('navbar').classList.add('active')
-            document.getElementById('navbar').classList.add('navbar-fixed-top')
-        }
-
-    });
-    function setPadding() {
-        if(!document.getElementById('navbar-collapse').className.match(/\in\b/)){
-            document.getElementById('navbar').style.paddingBottom = '70px';
-        }else{
-            document.getElementById('navbar').style.paddingBottom = '20px';
-        }
-
-    }
-</script>
-
-@include('includes.footer')
-@include('includes.metaFooter')
+@endsection
