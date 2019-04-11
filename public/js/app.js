@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     if(window.location.href.includes('human-resource') || window.location.href.includes('gallery') ||
-        window.location.href.includes('products') || window.location.href.includes('about-us') ||window.location.href.includes('chain-set')){
+        window.location.href.includes('products') || window.location.href.includes('about-us') ||window.location.href.includes('chain-set') || window.location.href.includes('home')){
         document.getElementById('navbar').classList.add('active')
         document.getElementById('navbar').classList.add('navbar-fixed-top')
     }else{
@@ -109,4 +109,36 @@ try {
     });
 }catch (e){
 
+}
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#galleryLoadImage').attr('src', e.target.result);
+            if($('#galleryLoadImage').hasClass('d-none')){
+                $('#galleryLoadImage').toggleClass('d-none')
+            }
+
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function readUrlProduct(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#productLoadImage').attr('src', e.target.result);
+            if($('#productLoadImage').hasClass('d-none')){
+                $('#productLoadImage').toggleClass('d-none')
+            }
+
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
 }

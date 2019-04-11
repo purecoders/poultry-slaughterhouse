@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-
+  <link rel="stylesheet" href="{{asset('css/animate.min.css')}}">
   <div class="section-container mt-5 pt-5">
     <section id="about-heading" class="p-5" style="overflow: hidden;margin-top: -1.6rem">
       <div class="dark-overlay">
@@ -22,7 +22,7 @@
 
       <div class="row section-container-spacer text-center">
         <div class="col-md-8 m-auto">
-          <div class="h_iframe-aparat_embed_frame" style="" >
+          <div class="h_iframe-aparat_embed_frame animated slideInUp " style="" >
             <span style="display: block;padding-top: 57%;"></span>
             <iframe style="" src="https://www.aparat.com/video/video/embed/videohash/XwP0U/vt/frame"  frameborder="0" allowfullscreen allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
           </div>

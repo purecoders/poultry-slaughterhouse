@@ -33,7 +33,20 @@
           <li><a href="{{route('products')}}" title="">محصولات شرکت</a></li>
           <li><a href="{{route('gallery')}}" title="">گالری</a></li>
           <li><a href="{{route('about-us')}}" title="">درباره ما</a></li>
+          @auth()
+            <li><a href="{{route('home')}}" class="text-primary nav-link-admin" title="">پنل مدیریت</a></li>
+            <li>
+              <a  href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                خروج
+              </a>
+            </li>
 
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          @endauth
           <li>
             {{--<p>--}}
               {{--<a href="./components.html" class="btn btn-default navbar-btn" title="">خرید آنلاین</a>--}}

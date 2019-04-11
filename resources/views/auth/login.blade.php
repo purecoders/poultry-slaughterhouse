@@ -7,9 +7,9 @@
             <div class="card p-0">
                 <div class="card-body">
 
-                    <div class="d-flex mb-3">
-                        <i class="fal fa-cog text-primary mt-2 mr-2" style="font-size: 1.4em"></i>
-                        <h3 style="font-weight: 200">پنل مدیریت</h3>
+                    <div class=" mb-3">
+                        <i class="fal fa-cog text-primary mt-2 mr-2 rotating " style="font-size: 1.4em"></i>
+                        <h3 class="d-inline-block" style="font-weight: 200">پنل مدیریت</h3>
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
