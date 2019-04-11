@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Photo extends Model
+class Media extends Model
 {
-    use SoftDeletes;
+  use SoftDeletes;
 
-    protected $fillable = ['original_url', 'resized_url'];
+  protected $fillable = ['type', 'resized_url', 'original_url'];
 }

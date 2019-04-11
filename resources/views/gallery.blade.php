@@ -24,14 +24,14 @@
         "thumbnailBorderVertical": 0,
         "thumbnailBorderHorizontal": 0,
         "thumbnailLabel": {
-          "display": false
+          "display": true
         },
         "thumbnailHoverEffect2": "imageGrayOff",
         "thumbnailAlignment": "center"
       }' >
 
       <!-- gallery content -->
-      <a href = "img-01.jpg"   data-ngThumb = "img-01.jpg" data-ngdesc=""></a>
+      <a href = "img-01.jpg"   data-ngThumb = "img-01.jpg" data-ngdesc="jfjdfj"></a>
       <a href = "img-04.jpg"   data-ngThumb = "img-04.jpg" data-ngdesc=""></a>
       <a href = "img-06.jpg"   data-ngThumb = "img-06.jpg" data-ngdesc=""></a>
       <a href = "img-05.jpg"   data-ngThumb = "img-05.jpg" data-ngdesc=""></a>
@@ -40,6 +40,7 @@
       <a href = "building.jpg"   data-ngThumb = "building.jpg" data-ngdesc=""></a>
       <a href = "slaughter-house.jpg"   data-ngThumb = "slaughter-house.jpg" data-ngdesc=""></a>
       <a href = "three.jpeg"   data-ngThumb = "three.jpeg" data-ngdesc=""></a>
+      <a href = "1.mp4"   data-ngThumb = "video.png" data-ngdesc=""></a>
       {{--<a href = "p3.jpg"   data-ngThumb = "p3.jpg" > Berlin 2 </a>--}}
       {{--<a href = "p2.jpg"   data-ngThumb = "p2.jpg" > Berlin 3 </a>--}}
     </div>

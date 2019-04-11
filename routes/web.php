@@ -41,8 +41,13 @@ Route::get('/about-us',function (){
 })->name('about-us');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-//Route::get('/home',function (){
-//  return view('home');
-//})->name('home')->middleware('auth');
+
+//dashboard routes
+Route::get('/home', 'AdminController@dashboard')->name('home');
+Route::post('/category-add', 'AdminController@categoryAdd')->name('category-add');
+Route::post('/category-delete', 'AdminController@categoryDelete')->name('category-delete');
+Route::post('/product-add', 'AdminController@productAdd')->name('product-add');
+Route::post('/product-delete', 'AdminController@productDelete')->name('product-delete');
+Route::post('/product-insert-price', 'AdminController@productInsertPrice')->name('product-insert-price');
+
