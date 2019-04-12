@@ -9,5 +9,5 @@ class Price extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['product_id', 'amount'];
+    protected $fillable = ['product_id', 'amount', 'date'];
 }

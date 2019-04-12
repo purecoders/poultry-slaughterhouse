@@ -17,352 +17,128 @@
         <p dir="rtl" align="center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
       </div>
     </div>
-    {{--category one--}}
-    <div class="rtl p-2 mb-5" style="border: 1px dotted #ffc107;border-radius: 1rem">
+
+
+
+      @foreach($categories as $category)
+        <div class="rtl p-2 mb-5" style="border: 1px dotted #ffc107;border-radius: 1rem">
       <div class="d-flex justify-content-center">
         <i class="fal fa-plus mt-2" style="color: #ffc107;font-size: 1.2em"></i>
-        <h3 class="ml-1" >مرغ ممتاز</h3>
+        <h3 class="ml-1" >{{$category->name}}</h3>
       </div>
-      {{--product one in category one--}}
-      <div class="row">
-        <div class="col-md-7 d-flex flex-wrap">
-          <img class="reveal product-img-alt" src="{{asset('img/p1.jpg')}}" alt="">
-          <div class="m-3">
-            <h5>مرغ ممتاز</h5>
-            <span>قیمت امروز : </span>
-            <span> 16،0000 تومان</span>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div style="width:100%;">
-            <canvas id="chart1" ></canvas>
-          </div>
-          <script>
-            var x = {{$test}};
-              var ctx = document.getElementById('chart1').getContext('2d');
-              var myChart = new Chart(ctx, {
-                  type: 'line',
-                  data: {
-                      labels: ['98/۶/۱', '98/1/10', '98/1/30', '98/2/30', '98/5/30'],
-                      datasets: [{
-                          label: 'نمودار قیمت',
-                          data: [x, 15000, 12500, 20000, 17500,],
-                          backgroundColor: [
-                              'rgba(255, 99, 50, 0.2)',
-                              'rgba(54, 162, 235, 0.2)',
-                              'rgba(255, 206, 86, 0.2)',
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(153, 102, 255, 0.2)',
-                              'rgba(255, 159, 64, 0.2)'
-                          ],
-                          borderColor: [
-                              'rgba(255, 99, 132, 1)',
-                              'rgba(54, 162, 235, 1)',
-                              'rgba(255, 206, 86, 1)',
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(153, 102, 255, 1)',
-                              'rgba(255, 159, 64, 1)'
-                          ],
-                          borderWidth: 1
-                      }]
-                  },
-                  options: {
-                      legend:{
-                        labels:{
-                            fontFamily:'IRANSans'
-                        }
-                      },
-                      scales: {
-                          scaleLabel:{
-                              fontFamily:'IRANSans',
-                              labelString:'IRANSans',
-                          },
-                          xAxes:[{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              }
-                          }],
-                          yAxes: [{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              },
-                              ticks: {
-                                  callback: function(value, index, values) {
-                                      return  value + ' تومان';
-                                  },
+       @php
+       $products = $category->products;
+       @endphp
+       @foreach($products as $product)
+         <div class="row">
+           <div class="col-md-7 d-flex flex-wrap">
+             <img class="reveal product-img-alt" src="{{asset($product->image_url)}}" alt="">
+             <div class="m-3">
+               <h5>{{$product->name}}</h5>
+               <span>قیمت امروز : </span>
+                 @if($product->prices !== null)
+               <span> {{number_format($product->prices()->take(1)->get()[0]->amount)}} تومان</span>
+                 @endif
+             </div>
+           </div>
+             @php
+             $prices = $product->prices()->take(6)->get()->reverse()->values();
+             $max = 0;
+             $min = 100000000000;
+             $date = new \App\Http\Controllers\PersianDate();
+             foreach ($prices as $price){
+                if($price->amount > $max) $max = $price->amount;
+                if($price->amount < $min) $min = $price->amount;
+             }
+             $step = (int)(($max - $min)/2);
+             $min = (int)($min - ($min/10));
+             @endphp
+           <div class="col-md-5">
+             <div style="width:100%;">
+               <canvas id="chart{{$product->id}}" ></canvas>
+             </div>
+             <script>
+                 var ctx = document.getElementById('chart{{$product->id}}').getContext('2d');
+                 var myChart = new Chart(ctx, {
+                     type: 'line',
+                     data: {
+                         labels: [
+                 @foreach($prices as $price)
+                 "{{$date->toPersiandate($price->date, 'y/m/d')}}",
+                 @endforeach
+                 ],
+                         datasets: [{
+                             label: 'نمودار قیمت',
+                             data: [
+                                 @foreach($prices as $price)
+                               "{{$price->amount}}",
+                                 @endforeach
+                             ],
+                             backgroundColor: [
+                                 'rgba(255, 99, 50, 0.2)',
+                                 'rgba(54, 162, 235, 0.2)',
+                                 'rgba(255, 206, 86, 0.2)',
+                                 'rgba(75, 192, 192, 0.2)',
+                                 'rgba(153, 102, 255, 0.2)',
+                                 'rgba(255, 159, 64, 0.2)'
+                             ],
+                             borderColor: [
+                                 'rgba(255, 99, 132, 1)',
+                                 'rgba(54, 162, 235, 1)',
+                                 'rgba(255, 206, 86, 1)',
+                                 'rgba(75, 192, 192, 1)',
+                                 'rgba(153, 102, 255, 1)',
+                                 'rgba(255, 159, 64, 1)'
+                             ],
+                             borderWidth: 1
+                         }]
+                     },
+                     options: {
+                         legend:{
+                           labels:{
+                               fontFamily:'IRANSans'
+                           }
+                         },
+                         scales: {
+                             scaleLabel:{
+                                 fontFamily:'IRANSans',
+                                 labelString:'IRANSans',
+                             },
+                             xAxes:[{
+                                 gridLines: {
+                                     color: "rgba(0, 0, 0, 0)",
+                                 }
+                             }],
+                             yAxes: [{
+                                 gridLines: {
+                                     color: "rgba(0, 0, 0, 0)",
+                                 },
+                                 ticks: {
+                                     callback: function(value, index, values) {
+                                         return  value + ' تومان';
+                                     },
 
-                                  min: 10000,
-                                  max: 20000,
+                                     min: {{$min}},
+                                     max: {{$max}},
 
-                                  // forces step size to be 5 units
-                                  stepSize: 5000 // <----- This prop sets the stepSize
-                              }
-                          }]
-                      }
-                  }
-              });
-          </script>
-        </div>
+                                     // forces step size to be 5 units
+                                     stepSize: {{$step}} // <----- This prop sets the stepSize
+                                 }
+                             }]
+                         }
+                     }
+                 });
+             </script>
+           </div>
 
-      </div>
-      <hr>
-      {{--product two in category one--}}
-      <div class="row">
-        <div class="col-md-7 d-flex flex-wrap">
-          <img class="reveal product-img-alt" src="{{asset('img/p2.jpg')}}" alt="">
-          <div class="m-3">
-            <h5>بال مرغ ممتاز</h5>
-            <span>قیمت امروز : </span>
-            <span> 19،0000 تومان</span>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div style="width:100%;">
-            <canvas id="chart2" ></canvas>
-          </div>
-          <script>
-              var x = {{$test}};
-              var ctx = document.getElementById('chart2').getContext('2d');
-              var myChart = new Chart(ctx, {
-                  type: 'line',
-                  data: {
-                      labels: ['98/۶/۱', '98/1/10', '98/1/30', '98/2/30', '98/5/30'],
-                      datasets: [{
-                          label: 'نمودار قیمت',
-                          data: [x, 15000, 12500, 20000, 17500,],
-                          backgroundColor: [
-                              'rgba(150, 35, 125, 0.2)',
-                              'rgba(54, 162, 235, 0.2)',
-                              'rgba(255, 206, 86, 0.2)',
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(153, 102, 255, 0.2)',
-                              'rgba(255, 159, 64, 0.2)'
-                          ],
-                          borderColor: [
-                              'rgba(255, 99, 132, 1)',
-                              'rgba(54, 162, 235, 1)',
-                              'rgba(255, 206, 86, 1)',
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(153, 102, 255, 1)',
-                              'rgba(255, 159, 64, 1)'
-                          ],
-                          borderWidth: 1
-                      }]
-                  },
-                  options: {
-                      legend:{
-                          labels:{
-                              fontFamily:'IRANSans'
-                          }
-                      },
-                      scales: {
-                          scaleLabel:{
-                              fontFamily:'IRANSans',
-                              labelString:'IRANSans',
-                          },
-                          xAxes:[{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              }
-                          }],
-                          yAxes: [{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              },
-                              ticks: {
-                                  callback: function(value, index, values) {
-                                      return  value + ' تومان';
-                                  },
+         </div>
+         <hr>
+       @endforeach
 
-                                  min: 10000,
-                                  max: 20000,
-
-                                  // forces step size to be 5 units
-                                  stepSize: 5000 // <----- This prop sets the stepSize
-                              }
-                          }]
-                      }
-                  }
-              });
-          </script>
-        </div>
-
-      </div>
     </div>
+      @endforeach
 
     {{--<hr style="background-color:rgb(255, 193, 7);">--}}
-    {{--category two--}}
-    <div class="rtl p-2 mb-4" style="border: 1px dotted #ffc107;border-radius: 1rem">
-      <div class="d-flex justify-content-center">
-        <i class="fal fa-plus mt-2" style="color: #ffc107;font-size: 1.2em"></i>
-        <h3 class="ml-1" >مرغ منجمد</h3>
-      </div>
-      {{--product one in category two--}}
-      <div class="row">
-        <div class="col-md-7 d-flex flex-wrap">
-          <img class="reveal product-img-alt" src="{{asset('img/p3.jpg')}}" alt="">
-          <div class="m-3">
-            <h5>مرغ ممتاز</h5>
-            <span>قیمت امروز : </span>
-            <span> 16،0000 تومان</span>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div style="width:100%;">
-            <canvas id="chart3" ></canvas>
-          </div>
-          <script>
-              var x = {{$test}};
-              var ctx = document.getElementById('chart3').getContext('2d');
-              var myChart = new Chart(ctx, {
-                  type: 'line',
-                  data: {
-                      labels: ['98/۶/۱', '98/1/10', '98/1/30', '98/2/30', '98/5/30'],
-                      datasets: [{
-                          label: 'نمودار قیمت',
-                          data: [x, 15000, 12500, 20000, 17500,],
-                          backgroundColor: [
-                              'rgba(255, 99, 50, 0.2)',
-                              'rgba(54, 162, 235, 0.2)',
-                              'rgba(255, 206, 86, 0.2)',
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(153, 102, 255, 0.2)',
-                              'rgba(255, 159, 64, 0.2)'
-                          ],
-                          borderColor: [
-                              'rgba(255, 99, 132, 1)',
-                              'rgba(54, 162, 235, 1)',
-                              'rgba(255, 206, 86, 1)',
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(153, 102, 255, 1)',
-                              'rgba(255, 159, 64, 1)'
-                          ],
-                          borderWidth: 1
-                      }]
-                  },
-                  options: {
-                      legend:{
-                          labels:{
-                              fontFamily:'IRANSans'
-                          }
-                      },
-                      scales: {
-                          scaleLabel:{
-                              fontFamily:'IRANSans',
-                              labelString:'IRANSans',
-                          },
-                          xAxes:[{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              }
-                          }],
-                          yAxes: [{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              },
-                              ticks: {
-                                  callback: function(value, index, values) {
-                                      return  value + ' تومان';
-                                  },
-
-                                  min: 10000,
-                                  max: 20000,
-
-                                  // forces step size to be 5 units
-                                  stepSize: 5000 // <----- This prop sets the stepSize
-                              }
-                          }]
-                      }
-                  }
-              });
-          </script>
-        </div>
-
-      </div>
-      <hr>
-      {{--product two in category two--}}
-      <div class="row">
-        <div class="col-md-7 d-flex flex-wrap">
-          <img class="reveal product-img-alt" src="{{asset('img/p2.jpg')}}" alt="">
-          <div class="m-3">
-            <h5>بال مرغ ممتاز</h5>
-            <span>قیمت امروز : </span>
-            <span> 19،0000 تومان</span>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div style="width:100%;">
-            <canvas id="chart4" ></canvas>
-          </div>
-          <script>
-              var x = {{$test}};
-              var ctx = document.getElementById('chart4').getContext('2d');
-              var myChart = new Chart(ctx, {
-                  type: 'line',
-                  data: {
-                      labels: ['98/۶/۱', '98/1/10', '98/1/30', '98/2/30', '98/5/30'],
-                      datasets: [{
-                          label: 'نمودار قیمت',
-                          data: [x, 15000, 12500, 20000, 17500,],
-                          backgroundColor: [
-                              'rgba(150, 35, 125, 0.2)',
-                              'rgba(54, 162, 235, 0.2)',
-                              'rgba(255, 206, 86, 0.2)',
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(153, 102, 255, 0.2)',
-                              'rgba(255, 159, 64, 0.2)'
-                          ],
-                          borderColor: [
-                              'rgba(255, 99, 132, 1)',
-                              'rgba(54, 162, 235, 1)',
-                              'rgba(255, 206, 86, 1)',
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(153, 102, 255, 1)',
-                              'rgba(255, 159, 64, 1)'
-                          ],
-                          borderWidth: 1
-                      }]
-                  },
-                  options: {
-                      legend:{
-                          labels:{
-                              fontFamily:'IRANSans'
-                          }
-                      },
-                      scales: {
-                          scaleLabel:{
-                              fontFamily:'IRANSans',
-                              labelString:'IRANSans',
-                          },
-                          xAxes:[{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              }
-                          }],
-                          yAxes: [{
-                              gridLines: {
-                                  color: "rgba(0, 0, 0, 0)",
-                              },
-                              ticks: {
-                                  callback: function(value, index, values) {
-                                      return  value + ' تومان';
-                                  },
-
-                                  min: 10000,
-                                  max: 20000,
-
-                                  // forces step size to be 5 units
-                                  stepSize: 5000 // <----- This prop sets the stepSize
-                              }
-                          }]
-                      }
-                  }
-              });
-          </script>
-        </div>
-
-      </div>
-    </div>
   </div>
 </div>
 

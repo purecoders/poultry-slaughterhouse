@@ -9,5 +9,5 @@ class Media extends Model
 {
   use SoftDeletes;
 
-  protected $fillable = ['type', 'resized_url', 'original_url'];
+  protected $fillable = ['type', 'resized_url', 'original_url', 'text'];
 }

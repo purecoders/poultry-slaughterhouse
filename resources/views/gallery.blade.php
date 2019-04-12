@@ -19,7 +19,7 @@
 
       <div id="nanogallery2"
       data-nanogallery2 = '{
-        "itemsBaseURL": "img/",
+        "itemsBaseURL": "",
         "thumbnailWidth": "200",
         "thumbnailBorderVertical": 0,
         "thumbnailBorderHorizontal": 0,
@@ -31,18 +31,9 @@
       }' >
 
       <!-- gallery content -->
-      <a href = "img-01.jpg"   data-ngThumb = "img-01.jpg" data-ngdesc="jfjdfj"></a>
-      <a href = "img-04.jpg"   data-ngThumb = "img-04.jpg" data-ngdesc=""></a>
-      <a href = "img-06.jpg"   data-ngThumb = "img-06.jpg" data-ngdesc=""></a>
-      <a href = "img-05.jpg"   data-ngThumb = "img-05.jpg" data-ngdesc=""></a>
-      <a href = "img-07.jpg"   data-ngThumb = "img-07.jpg" data-ngdesc=""></a>
-      <a href = "slaughter-house2.jpg"   data-ngThumb = "slaughter-house2.jpg" data-ngdesc=""></a>
-      <a href = "building.jpg"   data-ngThumb = "building.jpg" data-ngdesc=""></a>
-      <a href = "slaughter-house.jpg"   data-ngThumb = "slaughter-house.jpg" data-ngdesc=""></a>
-      <a href = "three.jpeg"   data-ngThumb = "three.jpeg" data-ngdesc=""></a>
-      <a href = "1.mp4"   data-ngThumb = "video.png" data-ngdesc=""></a>
-      {{--<a href = "p3.jpg"   data-ngThumb = "p3.jpg" > Berlin 2 </a>--}}
-      {{--<a href = "p2.jpg"   data-ngThumb = "p2.jpg" > Berlin 3 </a>--}}
+          @foreach($media as $item)
+             <a href = "{{$item->original_url}}"   data-ngThumb = "{{$item->resized_url}}" data-ngdesc="{{$item->text}}"></a>
+          @endforeach
     </div>
 
 

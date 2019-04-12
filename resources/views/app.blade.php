@@ -128,15 +128,14 @@
 
           </div>
           <div class="row">
-            <div class="col-md-3 text-center">
-              <img class="reveal product-img" src="{{asset('img/p1.jpg')}}" alt="">
-            </div>
-            <div class="col-md-3 text-center">
-              <img class="reveal product-img" src="{{asset('img/p2.jpg')}}" alt="">
-            </div>
-            <div class="col-md-3 text-center">
-              <img class="reveal product-img" src="{{asset('img/p3.jpg')}}" alt="">
-            </div>
+
+              @foreach($products as $product)
+              <div class="col-md-3 text-center">
+              <img class="reveal product-img" src="{{asset($product->image_url)}}" alt="">
+              </div>
+              @endforeach
+
+
             <div  class="col-md-3 text-center">
               <div class="product-more d-flex justify-content-center align-items-center">
                 <a  href="{{route('products')}}"  class="btn btn-primary ">
@@ -160,17 +159,19 @@
           </div>
           <div class="card-container rtl">
             <div class="card card-shadow col-12 col-md-8 m-auto reveal">
-              <form action="" class="reveal-content">
+
+                <form action="{{route('message-send')}}" method="post" class="reveal-content">
+                    @csrf
                 <div class="row" dir="rtl">
                   <div class="col-md-7">
                     <div class="form-group">
-                      <input type="email" class="form-control" id="email" placeholder="ایمیل">
+                      <input name="email" type="email" class="form-control" id="email" placeholder="ایمیل">
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="subject" placeholder="موضوع">
+                      <input name="title" type="text" class="form-control" id="subject" placeholder="موضوع">
                     </div>
                     <div class="form-group">
-                      <textarea class="form-control" rows="3" placeholder="متن پیام را وارد کنید"></textarea>
+                      <textarea name="description" maxlength="6000" class="form-control" rows="3" placeholder="متن پیام را وارد کنید"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">ارسال پیام</button>
                   </div>

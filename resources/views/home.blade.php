@@ -172,20 +172,20 @@
                 <i class="fal fa-file-image text-primary"></i>
                 گالری
               </h5>
-              <form action="#" onsubmit="return confirm('آیا از ثبت این عکس مطمئن هستید؟')">
+              <form action="{{route('media-add')}}" method="post" enctype="multipart/form-data" onsubmit="return confirm('آیا از ثبت این رسانه مطمئن هستید؟')">
                 @csrf
 
                 <div class="form-group row">
                   <label for="galleryImage" class="col-sm-4 col-form-label">تصویر/ ویدیو</label>
                   <div class="col-sm-8">
-                    <input type="file" class="form-control-file" id="galleryImage" onchange="readURL(this);" required>
+                    <input type="file" name="file" class="form-control-file" id="galleryImage" onchange="readURL(this);" required>
                   </div>
                 </div>
 
                   <div class="form-group row">
                       <label for="galleryImage" class="col-sm-4 col-form-label">توضیحات</label>
                       <div class="col-sm-8">
-                          <textarea maxlength="250" class="form-control-file" placeholder="توضیحات(حداکثر 250 کاراکتر)"></textarea>
+                          <textarea name="text" maxlength="250" class="form-control-file" placeholder="توضیحات(حداکثر 250 کاراکتر)"></textarea>
                       </div>
                   </div>
 
@@ -212,11 +212,13 @@
               </h5>
               <div class="d-flex flex-wrap justify-content-center">
 
+                  @foreach($media as $item)
                 <div class="card text-white mr-1 mt-1 p-0 card-gallery">
-                  <img src="{{asset('img/img-04.jpg')}}" class="card-img">
+                  <img src="{{asset($item->resized_url)}}" class="card-img">
                   <div class="card-img-overlay p-0">
-                    <form action="#" class="" onsubmit="return confirm('آیا از ثبت قیمت این عکس مطمئن هستید؟')">
+                    <form action="{{route('media-delete')}}" method="post" class="" onsubmit="return confirm('آیا از حذف این رسانه مطمئن هستید؟')">
                       @csrf
+                        <input type="hidden" name="id" value="{{$item->id}}">
                       <button type="submit" class="btn  btn-danger" style="padding: 4px 8px; font-size: 0.9em">
                         <i class="fal fa-times"></i>
                         حذف
@@ -224,42 +226,7 @@
                     </form>
                   </div>
                 </div>
-                <div class="card text-white mr-1 mt-1 p-0 card-gallery">
-                  <img src="{{asset('img/img-06.jpg')}}" class="card-img">
-                  <div class="card-img-overlay p-0">
-                    <form action="#" class="" onsubmit="return confirm('آیا از ثبت قیمت این عکس مطمئن هستید؟')">
-                      @csrf
-                      <button type="submit" class="btn  btn-danger" style="padding: 4px 8px; font-size: 0.9em">
-                        <i class="fal fa-times"></i>
-                        حذف
-                      </button>
-                    </form>
-                  </div>
-                </div>
-                <div class="card text-white mr-1 mt-1 p-0 card-gallery">
-                  <img src="{{asset('img/img-07.jpg')}}" class="card-img">
-                  <div class="card-img-overlay p-0">
-                    <form action="#" class="" onsubmit="return confirm('آیا از ثبت قیمت این عکس مطمئن هستید؟')">
-                      @csrf
-                      <button type="submit" class="btn  btn-danger" style="padding: 4px 8px; font-size: 0.9em">
-                        <i class="fal fa-times"></i>
-                        حذف
-                      </button>
-                    </form>
-                  </div>
-                </div>
-                <div class="card text-white mr-1 mt-1 p-0 card-gallery">
-                  <img src="{{asset('img/img-01.jpg')}}" class="card-img">
-                  <div class="card-img-overlay p-0">
-                    <form action="#" class="" onsubmit="return confirm('آیا از ثبت قیمت این عکس مطمئن هستید؟')">
-                      @csrf
-                      <button type="submit" class="btn  btn-danger" style="padding: 4px 8px; font-size: 0.9em">
-                        <i class="fal fa-times"></i>
-                        حذف
-                      </button>
-                    </form>
-                  </div>
-                </div>
+                  @endforeach
 
               </div>
             </div>
@@ -285,24 +252,19 @@
                 </tr>
                 </thead>
                 <tbody>
+
+                @php($i = 0)
+                @foreach($messages as $message)
                 <tr>
-                  <th scope="row">1</th>
-                  <td >pouyaakn4@gmail.com</td>
-                  <td>خرید عمده</td>
-                  <td align="justify">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                    چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                    نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                  <th scope="row">{{++$i}}</th>
+                  <td >{{$message->email}}</td>
+                  <td>{{$message->title}}</td>
+                  <td align="justify">
+                      {{$message->description}}
                   </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Mohsen@gmail.com</td>
-                  <td>خرید مرغ</td>
-                  <td align="justify">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                    چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
-                    نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                  </td>
-                </tr>
+                @endforeach
+
 
                 </tbody>
               </table>

@@ -15,30 +15,13 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 
-Route::get('/', function () {
-  return view('app');
-})->name('app');
-
-Route::get('/human-resource',function (){
-  return view('humanResource');
-})->name('human-resource');
-
-Route::get('/products',function (){
-  $test = 10000;
-  return view('products',compact('test'));
-})->name('products');
-
-Route::get('/gallery',function (){
-  return view('gallery');
-})->name('gallery');
-
-Route::get('/chain-set',function (){
-  return view('chainSet');
-})->name('chain-set');
-
-Route::get('/about-us',function (){
-  return view('aboutUs');
-})->name('about-us');
+Route::get('/', 'SiteController@index')->name('app');
+Route::get('/human-resource', 'SiteController@humanResource')->name('human-resource');
+Route::get('/products', 'SiteController@products')->name('products');
+Route::get('/gallery', 'SiteController@gallery')->name('gallery');
+Route::get('/chain-set', 'SiteController@chainSet')->name('chain-set');
+Route::get('/about-us', 'SiteController@aboutUs')->name('about-us');
+Route::post('/message-send', 'SiteController@messageSend')->name('message-send');
 
 
 
@@ -50,4 +33,6 @@ Route::post('/category-delete', 'AdminController@categoryDelete')->name('categor
 Route::post('/product-add', 'AdminController@productAdd')->name('product-add');
 Route::post('/product-delete', 'AdminController@productDelete')->name('product-delete');
 Route::post('/product-insert-price', 'AdminController@productInsertPrice')->name('product-insert-price');
+Route::post('/media-add', 'AdminController@mediaAdd')->name('media-add');
+Route::post('/media-delete', 'AdminController@mediaDelete')->name('media-delete');
 
