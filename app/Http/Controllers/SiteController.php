@@ -40,7 +40,8 @@ class SiteController extends Controller
 
     public function products(){
       $categories = Category::all();
-      return view('products',compact('categories'));
+      $counter = 0;
+      return view('products',compact(['categories', 'counter']));
     }
 
     public function aboutUs(){

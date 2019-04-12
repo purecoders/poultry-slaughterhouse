@@ -35,13 +35,14 @@
              <img class="reveal product-img-alt" src="{{asset($product->image_url)}}" alt="">
              <div class="m-3">
                <h5>{{$product->name}}</h5>
-               <span>قیمت امروز : </span>
+               <span>آخرین قیمت : </span>
                  @if($product->prices !== null)
                <span> {{number_format($product->prices()->take(1)->get()[0]->amount)}} تومان</span>
                  @endif
              </div>
            </div>
              @php
+             $counter++;
              $prices = $product->prices()->take(6)->get()->reverse()->values();
              $max = 0;
              $min = 100000000000;
@@ -74,22 +75,42 @@
                                "{{$price->amount}}",
                                  @endforeach
                              ],
-                             backgroundColor: [
-                                 'rgba(255, 99, 50, 0.2)',
-                                 'rgba(54, 162, 235, 0.2)',
-                                 'rgba(255, 206, 86, 0.2)',
-                                 'rgba(75, 192, 192, 0.2)',
-                                 'rgba(153, 102, 255, 0.2)',
-                                 'rgba(255, 159, 64, 0.2)'
-                             ],
-                             borderColor: [
-                                 'rgba(255, 99, 132, 1)',
-                                 'rgba(54, 162, 235, 1)',
-                                 'rgba(255, 206, 86, 1)',
-                                 'rgba(75, 192, 192, 1)',
-                                 'rgba(153, 102, 255, 1)',
-                                 'rgba(255, 159, 64, 1)'
-                             ],
+                           @if($counter % 2 == 0)
+                                backgroundColor: [
+                                    'rgba(255, 99, 50, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+
+                           @else
+                                backgroundColor: [
+                                  'rgba(150, 35, 125, 0.2)',
+                                  'rgba(54, 162, 235, 0.2)',
+                                  'rgba(255, 206, 86, 0.2)',
+                                  'rgba(75, 192, 192, 0.2)',
+                                  'rgba(153, 102, 255, 0.2)',
+                                  'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                  'rgba(255, 99, 132, 1)',
+                                  'rgba(54, 162, 235, 1)',
+                                  'rgba(255, 206, 86, 1)',
+                                  'rgba(75, 192, 192, 1)',
+                                  'rgba(153, 102, 255, 1)',
+                                  'rgba(255, 159, 64, 1)'
+                                ],
+                           @endif
                              borderWidth: 1
                          }]
                      },
