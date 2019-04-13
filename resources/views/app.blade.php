@@ -182,7 +182,7 @@
                           <i class="fal fa-phone" aria-hidden="true"></i>
                         </span>
                         <span dir="ltr">
-                        + 44 34 34 2453
+                        041 42 23 6292
                       </span>
                       </li>
                       <li dir="rtl" align="right">

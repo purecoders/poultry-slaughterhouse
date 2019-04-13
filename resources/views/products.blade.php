@@ -51,8 +51,8 @@
                 if($price->amount > $max) $max = $price->amount;
                 if($price->amount < $min) $min = $price->amount;
              }
+             //$min = (int)($min - ($min/10));
              $step = (int)(($max - $min)/2);
-             $min = (int)($min - ($min/10));
              @endphp
            <div class="col-md-5">
              <div style="width:100%;">

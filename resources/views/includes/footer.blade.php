@@ -9,11 +9,11 @@
         <hr style="background-color:rgb(255, 193, 7);">
         <div class="p-2">
           <span>تلفن : </span>
-          <span class="ml-2">6292 23 42 044</span>
+          <span class="ml-2">6292 23 42 041</span>
         </div>
         <div class="p-2">
           <span>فاکس : </span>
-          <span>1352 24 42 044</span>
+          <span>1352 24 42 041</span>
         </div>
         <div class="p-2">
           <p>
