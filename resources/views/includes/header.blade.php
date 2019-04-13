@@ -22,8 +22,8 @@
               مجموعه زنجیره ای
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:200px">
-              <a id="toFlamingo" class="dropdown-item" href="{{route('chain-set')}}#flamingo1">مرغ مادرفلامینگو فرام یک</a>
-              <a id="toFlamingo2" class="dropdown-item" href="{{route('chain-set')}}#flamingo2">مرغ مادرفلامینگو فرام دو</a>
+              <a id="toFlamingo" class="dropdown-item" href="{{route('chain-set')}}#flamingo1">مرغ مادرفلامینگو فارم یک</a>
+              <a id="toFlamingo2" class="dropdown-item" href="{{route('chain-set')}}#flamingo2">مرغ مادرفلامینگو فارم دو</a>
               <a id="toSepidmorgh" class="dropdown-item" href="{{route('chain-set')}}#sepidmorgh">مرغ مادر سپید مرغ</a>
               <a id="toKhushekhan" class="dropdown-item" href="{{route('chain-set')}}#khushekhan">مرغ مادر خوشه خوان</a>
               <a id="toTavoni" class="dropdown-item" href="{{route('chain-set')}}#tavoni">مرغ مادر تعاونی</a>
