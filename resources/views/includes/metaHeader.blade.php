@@ -19,6 +19,15 @@
   <link href="{{asset('css/app.css')}}" rel="stylesheet">
   <link href="{{asset('css/all.min.css')}}" rel="stylesheet">
 
+  <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/flag-icon.min.css')}}">
+
+  <script src="{{asset('js/jquery.min.js')}}" defer></script>
+  <script src="{{asset('js/translate.jquery.js')}}" defer></script>
+  <script src="{{asset('js/main.0cf8b554.js')}}" defer></script>
+  <script src="{{asset('js/app.js')}}" defer></script>
+
+  <script src="{{asset('js/bootstrap-select.min.js')}}" defer></script>
 </head>
 
 <body>

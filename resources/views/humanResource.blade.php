@@ -5,15 +5,15 @@
   <div class="container text-center mt-3">
     <div class="row section-container-spacer">
       <div class="col-xs-12 col-md-12">
-        <h2>منابع انسانی</h2>
-        <p dir="rtl" align="center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+        <h2 class="trn">منابع انسانی</h2>
+        <p dir="rtl" align="center" class="trn">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-4">
         <img src="{{asset('img/profil-01.jpg')}}" alt="" class="reveal img-responsive reveal-content image-center">
-        <h3>محسن وطنی</h3>
-        <h4>مسئول فروش</h4>
+        <h3 class="trn">محسن وطنی</h3>
+        <h4 class="trn">مسئول فروش</h4>
         <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
         <p>
           <a href="https://facebook.com/" class="social-round-icon fa-icon" title="">
