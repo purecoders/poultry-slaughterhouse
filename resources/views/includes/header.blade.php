@@ -1,5 +1,6 @@
 <!-- Add your content of header -->
 <header class="">
+
   <nav id="navbar" class="navbar navbar-expand-lg navbar-default home">
     <div class="container">
       <div class="navbar-header">
@@ -10,29 +11,27 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{route('app')}}" title="">
-          <img src="{{asset('img/poultry-icon.svg')}}" class="navbar-logo-img" alt="">
-          کشتارگاه جهان مرغ
+          <img src="{{asset('img/brand-notext.png')}}"  class="navbar-logo-img" alt="">
+          <span class="trn">کشتارگاه جهان مرغ</span>
         </a>
       </div>
 
       <div id="navbar-collapse"  class="collapse navbar-collapse" >
         <ul class="nav navbar-nav navbar-right rtl">
           <li class="dropdown">
-            <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              مجموعه زنجیره ای
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:200px">
-              <a id="toFlamingo" class="dropdown-item" href="{{route('chain-set')}}#flamingo1">مرغ مادرفلامینگو فارم یک</a>
-              <a id="toFlamingo2" class="dropdown-item" href="{{route('chain-set')}}#flamingo2">مرغ مادرفلامینگو فارم دو</a>
-              <a id="toSepidmorgh" class="dropdown-item" href="{{route('chain-set')}}#sepidmorgh">مرغ مادر سپید مرغ</a>
-              <a id="toKhushekhan" class="dropdown-item" href="{{route('chain-set')}}#khushekhan">مرغ مادر خوشه خوان</a>
-              <a id="toTavoni" class="dropdown-item" href="{{route('chain-set')}}#tavoni">مرغ مادر تعاونی</a>
+            <a class="nav-link dropdown-toggle trn" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">مجموعه زنجیره ای</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:250px">
+              <a id="toFlamingo" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#flamingo1">مرغ مادر فلامينگو فارم يک</a>
+              <a id="toFlamingo2" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#flamingo2">مرغ مادر فلامينگو فارم دو</a>
+              <a id="toSepidmorgh" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#sepidmorgh">مرغ مادر سپيدمرغ</a>
+              <a id="toKhushekhan" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#khushekhan">مرغ مادر خوشه خوان</a>
+              <a id="toTavoni" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#tavoni">مرغ مادر تعاوني 323</a>
             </div>
           </li>
-          <li><a href="{{route('human-resource')}}" title="">منابع انسانی</a></li>
-          <li><a href="{{route('products')}}" title="">محصولات شرکت</a></li>
-          <li><a href="{{route('gallery')}}" title="">گالری</a></li>
-          <li><a href="{{route('about-us')}}" title="">درباره ما</a></li>
+          <li><a href="{{route('human-resource')}}" class="trn" title="">منابع انسانی</a></li>
+          <li><a href="{{route('products')}}" class="trn" title="">قیمت محصولات</a></li>
+          <li><a href="{{route('gallery')}}" class="trn" title="">گالری</a></li>
+          <li><a href="{{route('about-us')}}" class="trn" title="">درباره ما</a></li>
           @auth()
             <li><a href="{{route('home')}}" class="text-primary nav-link-admin" title="">پنل مدیریت</a></li>
             <li>
@@ -56,5 +55,10 @@
         </ul>
       </div> 
     </div>
+      <select id="langSelect" class="selectpicker" data-width="fit">
+        <option  data-content='<span class="flag-icon flag-icon-ir"></span>' value="fr"></option>
+        <option  data-content='<span class="flag-icon flag-icon-iq"></span>' value="ar"></option>
+        <option data-content='<span class="flag-icon flag-icon-us"></span>' value="en"></option>
+      </select>
   </nav>
 </header>

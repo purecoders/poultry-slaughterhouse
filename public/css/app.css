@@ -10266,12 +10266,12 @@ h3 {
 
 .navbar-brand > .navbar-logo-img {
   height: 50px;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  -ms-filter: fliph;
-  /*IE*/
-  -webkit-filter: fliph;
-          filter: fliph;
+  /*-webkit-transform: scaleX(-1);*/
+  /*transform: scaleX(-1);*/
+  /*-ms-filter: fliph;*/
+  /*!*IE*!*/
+  /*-webkit-filter: fliph;*/
+          /*filter: fliph;*/
   /*IE*/
   display: inline-block;
   margin-top: -5px;
@@ -11218,4 +11218,38 @@ a.text-primary:hover, a.text-primary:focus {
   border-radius: 0.25rem;
   width: 100%;
   max-height: 500px;
+}
+
+.navbar .open .dropdown-menu {
+    display: block;
+}
+.selectpicker{
+    color: transparent;
+    padding: 0px !important;
+    background-color: transparent !important;
+    text-align: left;
+    border: 0px;
+}
+.selectpicker li {
+    direction: rtl;
+}
+.selectpicker li a {
+     color: white;
+
+ }
+.selectpicker li a:hover {
+    text-decoration: none;
+    color: #ffc107;
+}
+.bootstrap-select{
+    position: absolute;
+    top:0;
+
+}
+.bootstrap-select.btn-group .btn .filter-option {
+     width: auto !important;
+}
+.en-digit {
+  direction: ltr  !important;
+  font-family: Tahoma;
 }

@@ -13,8 +13,8 @@
   <div class="container mt-3">
     <div class="row section-container-spacer">
       <div class="col-xs-12 col-md-12 text-center ">
-        <h2>محصولات</h2>
-        <p dir="rtl" align="center">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+        <h2 class="trn">محصولات</h2>
+        <p dir="rtl" align="center" class="trn">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
         <div class="rtl p-2 mb-5" style="border: 1px dotted #ffc107;border-radius: 1rem">
       <div class="d-flex justify-content-center">
         <i class="fal fa-plus mt-2" style="color: #ffc107;font-size: 1.2em"></i>
-        <h3 class="ml-1" >{{$category->name}}</h3>
+        <h3 class="ml-1 trn" >{{$category->name}}</h3>
       </div>
        @php
        $products = $category->products;
@@ -34,10 +34,17 @@
            <div class="col-md-7 d-flex flex-wrap">
              <img class="reveal product-img-alt" src="{{asset($product->image_url)}}" alt="">
              <div class="m-3">
-               <h5>{{$product->name}}</h5>
-               <span>آخرین قیمت : </span>
+               <h5 class="trn">{{$product->name}}</h5>
+               <span>
+                 <span class="trn">آخرین قیمت</span>
+                 :
+
+               </span>
                  @if($product->prices !== null)
-               <span> {{number_format($product->prices()->take(1)->get()[0]->amount)}} تومان</span>
+               <span>
+                 <span class="trn-digit">{{number_format($product->prices()->take(1)->get()[0]->amount)}}</span>
+                 <span class="trn">تومان</span>
+               </span>
                  @endif
              </div>
            </div>
