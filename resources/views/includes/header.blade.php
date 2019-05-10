@@ -10,8 +10,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{route('app')}}" title="">
-          <img src="{{asset('img/brand-notext.png')}}" class="navbar-logo-img" alt="">
-          <span class="trn">کشتارگاه جهان مرغ</span>
+          <img src="{{asset('img/brand.png')}}" class="navbar-logo-img" alt="">
+          {{--<span class="trn">کشتارگاه جهان مرغ</span>--}}
         </a>
       </div>
 

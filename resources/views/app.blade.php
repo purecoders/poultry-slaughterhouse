@@ -126,6 +126,7 @@
               @foreach($products as $product)
               <div class="col-md-3 text-center">
               <img class="reveal product-img" src="{{asset($product->image_url)}}" alt="">
+                <h6 class="mt-3">{{$product->name}}</h6>
               </div>
               @endforeach
 

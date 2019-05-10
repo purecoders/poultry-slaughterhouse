@@ -10265,14 +10265,14 @@ h3 {
 }
 
 .navbar-brand > .navbar-logo-img {
-  height: 50px;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  -ms-filter: fliph;
-  /*IE*/
-  -webkit-filter: fliph;
-          filter: fliph;
-  /*IE*/
+  height: 150px;
+  /*-webkit-transform: scaleX(-1);*/
+  /*transform: scaleX(-1);*/
+  /*-ms-filter: fliph;*/
+  /*!*IE*!*/
+  /*-webkit-filter: fliph;*/
+          /*filter: fliph;*/
+  /*!*IE*!*/
   display: inline-block;
   margin-top: -5px;
 }
@@ -11089,7 +11089,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-size: 1.1em;
   }
   .navbar-brand .navbar-logo-img {
-    height: 35px;
+    margin-top: 0.75rem;
+    height: 80px;
   }
 
   #slogan h1 {
@@ -11252,3 +11253,15 @@ a.text-primary:hover, a.text-primary:focus {
 .en-digit {
   font-family: Tahoma;
 }
+@media (max-width: 375px) {
+  .navbar-brand .navbar-logo-img {
+    margin-top: 0.25rem;
+    height: 60px;
+  }
+}
+/*@media (max-width: 375px) {*/
+  /*.navbar-brand .navbar-logo-img {*/
+    /*margin-top: 0rem;*/
+    /*height: 60px;*/
+  /*}*/
+/*}*/
