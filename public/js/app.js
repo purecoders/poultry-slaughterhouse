@@ -308,10 +308,15 @@ var dict = {
         ar:"أجنحة الدجاج"
      },
 
-    "قیمت محصولات":{
-       en:"Price Of Products",
-       ar:"سعر المنتج"
-    },
+  "واحدها":{
+    en:"units",
+    ar:"مجموع"
+  },
+
+  " انتخاب تاریخ : ":{
+    en:" select date : ",
+    ar:"حدد تاريخ : "
+  },
 
     "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." : {
         en: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet autem dolor eum modi quidem tempora. Aut commodi cumque cupiditate earum eius, enim eveniet facilis laboriosam nemo officia qui sit soluta tenetur ut velit! Deleniti, recusandae",
@@ -398,3 +403,27 @@ function getCookie(cname) {
     }
     return "";
 }
+
+$(document).ready(function () {
+    new persianDate().format("dddd, MMMM DD YYYY");
+    $('.j-date').persianDatepicker({
+        autoClose: true,
+        observer: true,
+        navigator: {
+            scroll: {
+                enabled: false
+            }
+        },
+        altField: '.observer-example-alt',
+        onSelect: function(unix){
+            $('.j-date').siblings('.selected-date').innerHTML = new persianDate(unix).format("YY/MM/DD");
+
+            // persianDate(1318874398806).format();
+            $.ajax({url: "http://localhost/poultry_house_back/price-by-date/" + unix, success: function(result){
+                    console.log(result);
+            }});
+
+        },
+        format: 'DD / MM / YYYY'
+    });
+});

@@ -11,15 +11,16 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{route('app')}}" title="">
-          <img src="{{asset('img/brand-notext.png')}}"  class="navbar-logo-img" alt="">
-          <span class="trn">کشتارگاه جهان مرغ</span>
+{{--          <img src="{{asset('img/brand-notext.png')}}"  class="navbar-logo-img" alt="">--}}
+          <img src="{{asset('img/brand.png')}}"  class="navbar-logo-img" alt="">
+            <b><span class="trn" style="color: #7eb52b">کشتارگاه جهان مرغ</span></b>
         </a>
       </div>
 
       <div id="navbar-collapse"  class="collapse navbar-collapse" >
         <ul class="nav navbar-nav navbar-right rtl">
           <li class="dropdown">
-            <a class="nav-link dropdown-toggle trn" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">مجموعه زنجیره ای</a>
+            <a class="nav-link dropdown-toggle trn" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">واحدها</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:250px">
               <a id="toFlamingo" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#flamingo1">مرغ مادر فلامينگو فارم يک</a>
               <a id="toFlamingo2" class="dropdown-item trn trn-digit" href="{{route('chain-set')}}#flamingo2">مرغ مادر فلامينگو فارم دو</a>
@@ -29,7 +30,18 @@
             </div>
           </li>
           <li><a href="{{route('human-resource')}}" class="trn" title="">منابع انسانی</a></li>
-          <li><a href="{{route('products')}}" class="trn" title="">قیمت محصولات</a></li>
+{{--          <li><a href="{{route('products')}}" class="trn" title="">محصولات</a></li>--}}
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle trn" style="color: white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">محصولات</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" dir="rtl" style="min-width:250px">
+                    @php
+                    $products = \App\Product::all();
+                    @endphp
+                    @foreach($products as $product)
+                    <a class="dropdown-item trn trn-digit" href="{{route('products')}}#product{{$product->id}}">{{$product->name}}</a>
+                    @endforeach
+                </div>
+            </li>
           <li><a href="{{route('gallery')}}" class="trn" title="">گالری</a></li>
           <li><a href="{{route('about-us')}}" class="trn" title="">درباره ما</a></li>
           @auth()

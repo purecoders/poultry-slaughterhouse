@@ -23,6 +23,8 @@ Route::get('/chain-set', 'SiteController@chainSet')->name('chain-set');
 Route::get('/about-us', 'SiteController@aboutUs')->name('about-us');
 Route::post('/message-send', 'SiteController@messageSend')->name('message-send');
 
+Route::get('price-by-date/{product_id}/{timestamp}', 'SiteController@priceByDate');
+
 
 
 

@@ -47,4 +47,19 @@ class SiteController extends Controller
     public function aboutUs(){
       return view('aboutUs');
     }
+
+
+    public function priceByDate($product_id, $date){
+      $product = Product::find($product_id);
+      $timestamp = substr($date, 0, -3);
+      // timestamp to date
+      $date =  date("Y-m-d",(int)$timestamp);
+      $result = 0;
+      $price = $product->prices()->where('date', '=', $date)->orderBy('id', 'desc')->first();
+      if ($price != null) {
+        $result = $price->amount;
+        $result = number_format($result);
+      }
+      return $result;
+    }
 }

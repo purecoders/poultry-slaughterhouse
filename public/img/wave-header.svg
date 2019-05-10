@@ -10,7 +10,7 @@
             <stop stop-color="#0369FC" offset="4.5053357%"></stop>
             <stop stop-color="#0468FB" offset="6.00516035%"></stop>
             <stop stop-color="#1165EF" offset="25.4821693%"></stop>
-            <stop stop-color="#000000" offset="100%"></stop>
+            <stop stop-color="#134f2f" offset="100%"></stop>
         </radialGradient>
     </defs>
     <g id="Ressource" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

@@ -16,6 +16,7 @@
   
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
   <link href="./assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="{{asset('css/persian-datepicker.min.css')}}">
   <link href="{{asset('css/app.css')}}" rel="stylesheet">
   <link href="{{asset('css/all.min.css')}}" rel="stylesheet">
 
@@ -27,6 +28,8 @@
   <script src="{{asset('js/jquery.min.js')}}" defer></script>
   <script src="{{asset('js/translate.jquery.js')}}" defer></script>
   <script src="{{asset('js/main.0cf8b554.js')}}" defer></script>
+    <script src="{{ asset('js/persian-date.min.js') }}" defer></script>
+    <script src="{{ asset('js/persian-datepicker.min.js') }}" defer></script>
   <script src="{{asset('js/app.js')}}" defer></script>
 
   <script src="{{asset('js/bootstrap-select.min.js')}}" defer></script>
