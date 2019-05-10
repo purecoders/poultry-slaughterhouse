@@ -11259,9 +11259,15 @@ a.text-primary:hover, a.text-primary:focus {
     height: 60px;
   }
 }
-/*@media (max-width: 375px) {*/
-  /*.navbar-brand .navbar-logo-img {*/
-    /*margin-top: 0rem;*/
-    /*height: 60px;*/
-  /*}*/
-/*}*/
+.j-date-product {
+  transition: margin-right ease 0.3s;
+}
+.j-date-product:hover{
+  margin-right: 5px;
+  cursor: pointer;
+}
+.selected-date-style {
+
+
+
+}

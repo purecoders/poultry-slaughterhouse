@@ -393,3 +393,27 @@ function getCookie(cname) {
     }
     return "";
 }
+
+$(document).ready(function () {
+    new persianDate().format("dddd, MMMM DD YYYY");
+    $('.j-date').persianDatepicker({
+        autoClose: true,
+        observer: true,
+        navigator: {
+            scroll: {
+                enabled: false
+            }
+        },
+        altField: '.observer-example-alt',
+        onSelect: function(unix){
+            $('.j-date').siblings('.selected-date').innerHTML = new persianDate(unix).format("YY/MM/DD");
+
+            // persianDate(1318874398806).format();
+            $.ajax({url: "http://localhost/poultry_house_back/price-by-date/" + unix, success: function(result){
+                    console.log(result);
+            }});
+
+        },
+        format: 'DD / MM / YYYY'
+    });
+});

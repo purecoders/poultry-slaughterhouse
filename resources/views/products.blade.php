@@ -9,6 +9,7 @@
     -ms-user-select: none;
   }
 </style>
+<script src="{{asset('js/jquery.min.js')}}"></script>
 <div class="section-container mt-5 pt-5">
   <div class="container mt-3">
     <div class="row section-container-spacer">
@@ -45,6 +46,20 @@
                  <span class="trn-digit">{{number_format($product->prices()->take(1)->get()[0]->amount)}}</span>
                  <span class="trn">تومان</span>
                </span>
+               <div class="mt-5">
+                 <span class="j-date{{$product->id}} j-date-product"> <i class="fal fa-calendar-alt text-primary"></i> انتخاب تاریخ :</span>
+                 @php
+                  $today = new \App\Http\Controllers\PersianDate();
+                 @endphp
+                 <span class="selected-date{{$product->id}} selected-date-style p-1">{{$today->toPersiandate(date('Y/m/d', time()), 'y/m/d')}}</span>
+                 <div>
+                   <i class="fal fa-money-bill-alt text-primary"></i>
+                   <span class="price-by-date{{$product->id}} mt-2  trn-digit">{{number_format($product->prices()->take(1)->get()[0]->amount)}}</span>
+                   <span class="trn">تومان</span>
+                 </div>
+
+               </div>
+
                  @endif
              </div>
            </div>
@@ -66,6 +81,30 @@
                <canvas id="chart{{$product->id}}" ></canvas>
              </div>
              <script>
+                 $(document).ready(function () {
+                     new persianDate().format("dddd, MMMM DD YYYY");
+                     $('.j-date{{$product->id}}').persianDatepicker({
+                         autoClose: true,
+                         observer: true,
+                         navigator: {
+                             scroll: {
+                                 enabled: false
+                             }
+                         },
+                         altField: '.observer-example-alt',
+                         onSelect: function(unix){
+
+                             $('.selected-date{{$product->id}}').text(new persianDate(unix).format("YY/MM/DD"));
+                             $.ajax({url: "http://localhost/poultry_house_back/price-by-date/" + unix, success: function(result){
+                                     $('.price-by-date{{$product->id}}').text(result);
+                                 }});
+
+                         },
+                         format: 'DD / MM / YYYY'
+                     });
+                 });
+
+
                  var ctx = document.getElementById('chart{{$product->id}}').getContext('2d');
                  var myChart = new Chart(ctx, {
                      type: 'line',

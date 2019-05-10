@@ -36,3 +36,17 @@ Route::post('/product-insert-price', 'AdminController@productInsertPrice')->name
 Route::post('/media-add', 'AdminController@mediaAdd')->name('media-add');
 Route::post('/media-delete', 'AdminController@mediaDelete')->name('media-delete');
 
+
+// route for testing ajax request product price by timestamp
+Route::get('price-by-date/{timestamp}',function ($timestamp){
+  $timestamp = substr($timestamp, 0, -3);
+
+  // timestamp to date
+  $date =  date("Y-m-d",(int)$timestamp);
+
+  $result = 1500;
+  $result = number_format($result);
+  return $result;
+
+});
+
